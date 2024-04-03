@@ -1,0 +1,9 @@
+scikit-learn
+transformers==4.38.2
+sentencepiece==0.2.0
+numpy==1.23.5
+pandas==2.1.4
+argparse
+tqdm
+torch
+

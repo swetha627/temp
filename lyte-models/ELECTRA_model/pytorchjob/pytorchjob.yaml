@@ -1,0 +1,32 @@
+apiVersion: "kubeflow.org/v1"
+kind: PyTorchJob
+metadata:
+  name: pytorch-sentimental-analysis-electra1
+  namespace: training-workloads
+spec:
+  pytorchReplicaSpecs:
+    Worker:
+      replicas: 1
+      restartPolicy: OnFailure
+      template:
+        metadata:
+          labels:
+            dataset.0.id: "example-dataset"
+            dataset.0.useas: "mount"
+
+        spec:
+          containers:
+            - name: pytorch
+              image: cledge/sentiment-analysis:electra
+              imagePullPolicy: Always
+              command:
+                - "python"
+                - "sentimentAnalysisElectra.py"
+                - "--data=Womens_Clothing_E-Commerce_Reviews.csv"
+                - "--output_dir=/mnt/datasets/example-dataset"
+                - "--num_train_epochs=2"
+              resources:
+                limits:
+                  #habana.ai/gaudi: 2
+                  memory: 1024Mi
+                  cpu: 5000m

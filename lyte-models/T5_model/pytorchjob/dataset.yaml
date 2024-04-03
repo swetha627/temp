@@ -1,0 +1,15 @@
+apiVersion: datashim.io/v1alpha1
+kind: Dataset
+metadata:
+  name: example-dataset
+  namespace: training-workloads
+spec:
+  local:
+    type: "COS"
+    accessKeyID: "root"
+    secretAccessKey: "tatacomm"
+    endpoint: "http://100.81.217.239:30114"
+    bucket: "kubeflow"
+    readonly: "false"
+
+

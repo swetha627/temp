@@ -1,0 +1,4 @@
+pandas==1.5.3
+plotly==5.9.0
+numpy==1.24.3
+gluonts==0.12.0
